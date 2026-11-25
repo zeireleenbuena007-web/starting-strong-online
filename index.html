@@ -10,11 +10,7 @@
 a{color:var(--teal);text-underline-offset:3px}.wrap{width:min(1120px,92%);margin:auto}
 header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
 nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}.brand{font-weight:850;letter-spacing:.03em;color:var(--teal);text-decoration:none;white-space:nowrap}
-nav .links{display:flex;flex-wrap:wrap;gap:13px;align-items:center}nav .links a{font-size:.86rem;text-decoration:none;color:var(--muted);padding-bottom:3px;transition:color .2s}
-nav .links a.nav-active{color:var(--teal);font-weight:750;box-shadow:inset 0 -2px 0 var(--teal)}
-.nav-progress{display:flex;align-items:center;gap:8px;font-size:.78rem;color:var(--muted);white-space:nowrap}
-.nav-progress-bar{width:64px;height:6px;background:#e8efeb;border-radius:99px;overflow:hidden}
-.nav-progress-fill{height:100%;width:0;background:var(--teal);transition:width .25s}
+nav .links{display:flex;flex-wrap:wrap;gap:13px}nav .links a{font-size:.86rem;text-decoration:none;color:var(--muted)}
 .hero{padding:62px 0;background:linear-gradient(120deg,#e5f0eb,#f7f2e7 65%,#f7e9df)}.hero-grid{display:grid;grid-template-columns:1.35fr .8fr;gap:32px;align-items:center}
 .kicker,.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800;color:var(--coral)}
 h1{font-size:clamp(2.6rem,6vw,4.8rem);line-height:1.02;letter-spacing:-.045em;margin:12px 0 18px}h2{font-size:clamp(1.8rem,4vw,2.55rem);line-height:1.12;letter-spacing:-.025em;margin:7px 0 12px}h3{font-size:1.2rem;line-height:1.25;margin:0 0 9px}h4{margin:0 0 7px;font-size:1rem}p{margin:0 0 13px}.lead{font-size:1.18rem;max-width:740px;color:#3e555d}
@@ -45,12 +41,7 @@ footer{background:#203d42;color:#e8f0ed;padding:34px 0}footer .closing{font-size
 <a class="brand" href="#top">STARTING STRONG ONLINE</a>
 <div class="links">
 <a href="#welcome">Welcome</a><a href="#unit1">Unit 1</a><a href="#unit2">Unit 2</a><a href="#unit3">Unit 3</a><a href="#unit4">Unit 4</a><a href="#finish">Course completion</a>
-</div>
-<div class="nav-progress" aria-label="Overall course progress" title="Units marked complete">
-<div class="nav-progress-bar"><div class="nav-progress-fill" id="overallProgressBar"></div></div>
-<span id="overallProgressText">0/4 units</span>
-</div>
-</nav></div></header>
+</div></nav></div></header>
 <main id="top">
 <section class="hero" id="welcome"><div class="wrap hero-grid">
 <div><div class="kicker">Your two-week online learning starter course</div>
@@ -209,7 +200,6 @@ footer{background:#203d42;color:#e8f0ed;padding:34px 0}footer .closing{font-size
 <label for="endReady">How ready do you now feel to begin or continue learning in an online or distance course?</label><select id="endReady"><option value="">Choose a response</option><option>Not yet ready</option><option>A little ready</option><option>Somewhat ready</option><option>Mostly ready</option><option>Very ready</option></select>
 <label for="endConfident">How confident do you now feel about finding course information, planning your studies, interacting, and seeking help?</label><select id="endConfident"><option value="">Choose a response</option><option>Not confident yet</option><option>A little confident</option><option>Somewhat confident</option><option>Mostly confident</option><option>Very confident</option></select>
 <button class="button smallbtn" onclick="saveFields('end')">Save my ending self-assessment</button></div>
-<div class="card" style="margin-top:16px"><h3>Export your responses</h3><p class="small">Copy your saved entries to paste elsewhere, or download a text file to keep on your device.</p><button class="button smallbtn" type="button" onclick="copyAllResponses(this)">Copy responses</button> <button class="button secondary smallbtn" type="button" onclick="downloadAllResponses(this)">Download (.txt)</button><p id="exportStatus" class="feedback" aria-live="polite"></p></div>
 <div class="dark-callout"><strong>Remember</strong><p class="closing">Starting strong does not mean never needing help. It means knowing how to move forward—and where to turn when you need support.</p></div>
 <p class="small" style="margin-top:18px">This is a proposed introductory course. Its activities and resources are intended to help learners prepare for their own institution's learning environment; they do not replace official course instructions or student services.</p>
 </div></section>
@@ -222,20 +212,11 @@ function saveFields(prefix){
   try{localStorage.setItem('sso_'+prefix,JSON.stringify(data));alert('Your work has been saved in this browser on this device.');}
   catch(e){alert('This browser could not save your work. You can copy your responses into your own notes instead.');}
 }
-function updateOverallProgress(){
-  let done=0;
-  for(let i=1;i<=4;i++){if(localStorage.getItem('sso_done_'+i)==='yes')done++;}
-  const bar=document.getElementById('overallProgressBar');
-  const text=document.getElementById('overallProgressText');
-  if(bar)bar.style.width=(done/4*100)+'%';
-  if(text)text.textContent=done+'/4 units';
-}
 function restoreFields(){
   ['u1','u2','u3','u4','final','start','end'].forEach(prefix=>{
     try{const data=JSON.parse(localStorage.getItem('sso_'+prefix)||'{}');Object.entries(data).forEach(([id,val])=>{const el=document.getElementById(id);if(el)el.value=val;});}catch(e){}
   });
   for(let i=1;i<=4;i++){if(localStorage.getItem('sso_done_'+i)==='yes')showComplete(i);}
-  updateOverallProgress();
 }
 function checkQuiz(n1,a1,n2,a2,feedbackId){
  const v1=document.querySelector('input[name="'+n1+'"]:checked')?.value;
@@ -272,102 +253,8 @@ function showComplete(i){
  document.getElementById('progress'+i).textContent='Marked complete';
 }
 function completeUnit(i){
- localStorage.setItem('sso_done_'+i,'yes');showComplete(i);updateOverallProgress();
+ localStorage.setItem('sso_done_'+i,'yes');showComplete(i);
 }
-function buildResponsesSummary(){
- const prefixes=['start','u1','u2','u3','u4','final','end'];
- const lines=['STARTING STRONG ONLINE — SAVED RESPONSES','========================================'];
- prefixes.forEach(prefix=>{
-   const raw=localStorage.getItem('sso_'+prefix);
-   if(!raw)return;
-   const data=JSON.parse(raw);
-   const entries=Object.entries(data).filter(([,val])=>val&&val.trim()!=='');
-   if(!entries.length)return;
-   lines.push('
-['+prefix.toUpperCase()+']');
-   entries.forEach(([id,val])=>{
-     const labelEl=document.querySelector('label[for="'+id+'"]');
-     const label=labelEl?labelEl.textContent.trim():id;
-     lines.push('- '+label+': '+val.trim());
-   });
- });
- return lines.length>2?lines.join('
-'):'No saved responses found yet. Save your entries first, then export.';
-}
-async function copyAllResponses(btn){
- const text=buildResponsesSummary();
- const status=document.getElementById('exportStatus');
- try{
-   if(navigator.clipboard&&window.isSecureContext){
-     await navigator.clipboard.writeText(text);
-   }else{
-     const ta=document.createElement('textarea');
-     ta.value=text;
-     document.body.appendChild(ta);
-     ta.select();
-     document.execCommand('copy');
-     ta.remove();
-   }
-   status.textContent='Copied your responses to the clipboard.';
-   status.style.color='#176b68';
-   if(btn){const prev=btn.textContent;btn.textContent='Copied!';setTimeout(()=>{btn.textContent=prev;},1500);}
- }catch(err){
-   status.textContent='Could not copy automatically. Use Download (.txt) instead.';
-   status.style.color='#a34e37';
- }
-}
-function downloadAllResponses(btn){
- const text=buildResponsesSummary();
- const blob=new Blob([text],{type:'text/plain;charset=utf-8'});
- const url=URL.createObjectURL(blob);
- const link=document.createElement('a');
- link.href=url;
- link.download='starting-strong-online-responses.txt';
- document.body.appendChild(link);
- link.click();
- link.remove();
- URL.revokeObjectURL(url);
- const status=document.getElementById('exportStatus');
- status.textContent='Downloaded starting-strong-online-responses.txt.';
- status.style.color='#176b68';
- if(btn){const prev=btn.textContent;btn.textContent='Downloaded!';setTimeout(()=>{btn.textContent=prev;},1500);}
-}
-function initActiveNav(){
-  const links=[...document.querySelectorAll('header nav .links a[href^="#"]')];
-  const sections=links
-    .map(a=>document.querySelector(a.getAttribute('href')))
-    .filter(Boolean);
-  if(!links.length||!sections.length)return;
-
-  function setActive(id){
-    links.forEach(a=>{
-      const match=a.getAttribute('href')==='#'+id;
-      a.classList.toggle('nav-active',match);
-      if(match)a.setAttribute('aria-current','location');
-      else a.removeAttribute('aria-current');
-    });
-  }
-
-  const observer=new IntersectionObserver(entries=>{
-    const visible=entries
-      .filter(e=>e.isIntersecting)
-      .sort((a,b)=>b.intersectionRatio-a.intersectionRatio);
-    if(visible.length){
-      setActive(visible[0].target.id);
-    }
-  },{rootMargin:'-18% 0px -62% 0px',threshold:[0.1,0.25,0.5]});
-
-  sections.forEach(sec=>observer.observe(sec));
-
-  window.addEventListener('scroll',()=>{
-    if((window.innerHeight+window.scrollY)>=document.documentElement.scrollHeight-20){
-      setActive('finish');
-    }
-  },{passive:true});
-
-  setActive(sections[0].id);
-}
-initActiveNav();
 restoreFields();
 </script>
 </body></html>
