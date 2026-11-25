@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Starting Strong Online | Learner Course</title>
+<style>
+:root{--ink:#1d2d35;--muted:#52656d;--paper:#f7f6f1;--white:#fff;--teal:#176b68;--teal2:#dcefeb;--gold:#e6b85c;--coral:#d9785d;--line:#d9e1dd;--blue:#e8eff5;--shadow:0 8px 24px rgba(25,55,55,.07)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 "Segoe UI",Arial,sans-serif}
+a{color:var(--teal);text-underline-offset:3px}.wrap{width:min(1120px,92%);margin:auto}
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);backdrop-filter:blur(8px)}
+nav{display:flex;align-items:center;justify-content:space-between;gap:18px;padding:12px 0}.brand{font-weight:850;letter-spacing:.03em;color:var(--teal);text-decoration:none;white-space:nowrap}
+nav .links{display:flex;flex-wrap:wrap;gap:13px}nav .links a{font-size:.86rem;text-decoration:none;color:var(--muted)}
+.hero{padding:62px 0;background:linear-gradient(120deg,#e5f0eb,#f7f2e7 65%,#f7e9df)}.hero-grid{display:grid;grid-template-columns:1.35fr .8fr;gap:32px;align-items:center}
+.kicker,.eyebrow{font-size:.75rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800;color:var(--coral)}
+h1{font-size:clamp(2.6rem,6vw,4.8rem);line-height:1.02;letter-spacing:-.045em;margin:12px 0 18px}h2{font-size:clamp(1.8rem,4vw,2.55rem);line-height:1.12;letter-spacing:-.025em;margin:7px 0 12px}h3{font-size:1.2rem;line-height:1.25;margin:0 0 9px}h4{margin:0 0 7px;font-size:1rem}p{margin:0 0 13px}.lead{font-size:1.18rem;max-width:740px;color:#3e555d}
+.panel,.card,.lesson,.activity,.check,.unit-card{background:var(--white);border:1px solid var(--line);border-radius:17px;box-shadow:var(--shadow)}
+.panel{padding:23px}.panel strong{color:var(--teal)}.pills{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.pill{border:1px solid var(--line);background:#fff;border-radius:99px;padding:5px 11px;font-size:.83rem;color:var(--muted)}
+section{padding:52px 0;border-bottom:1px solid var(--line)}.section-head{max-width:790px;margin-bottom:24px}.muted{color:var(--muted)}.small{font-size:.9rem;color:var(--muted)}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.three{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.card{padding:20px}.card p:last-child{margin-bottom:0}.unit-card{padding:20px;display:flex;flex-direction:column;gap:9px}.unit-card .unit-label{font-size:.75rem;font-weight:800;letter-spacing:.12em;color:var(--coral);text-transform:uppercase}.unit-card a{font-weight:700;text-decoration:none}.unit-card p{font-size:.93rem;color:var(--muted);margin:0}
+.button{display:inline-block;border:0;border-radius:9px;background:var(--teal);color:white;text-decoration:none;padding:10px 15px;font-weight:700;font:inherit;cursor:pointer}.button.secondary{background:#e7f0ed;color:#164e4c}.button.smallbtn{padding:7px 11px;font-size:.88rem;margin-top:10px}
+.notice{padding:16px 19px;border-left:5px solid var(--gold);background:#fff7e7;border-radius:0 12px 12px 0;margin:18px 0}.dark-callout{background:#203d42;color:white;border-radius:17px;padding:23px;margin-top:20px}.dark-callout strong{color:#a9d6ca}
+.sequence{display:flex;align-items:center;flex-wrap:wrap;gap:8px;margin:18px 0}.stage-icon{display:inline-flex;align-items:center;justify-content:center;margin-right:6px;font-size:1.02em;line-height:1;vertical-align:middle}.step .stage-icon{font-size:1rem}.step{padding:9px 12px;border:1px solid var(--line);background:#fff;border-radius:10px;font-weight:700;text-align:center}.arrow{font-size:1.2rem;color:var(--teal);font-weight:900}
+.unit{scroll-margin-top:100px}.unit-top{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:20px}.unit-top .tag{background:var(--blue);color:#34566b;padding:5px 11px;border-radius:99px;font-size:.8rem;font-weight:750}
+.unit-layout{display:grid;grid-template-columns:minmax(0,1fr) 250px;gap:20px;align-items:start}.maincol{display:grid;gap:16px}.sidecol{position:sticky;top:100px;display:grid;gap:12px}.lesson,.activity,.check{padding:22px}.lesson ul,.lesson ol{padding-left:22px;margin:8px 0 14px}.lesson li{margin:5px 0}
+.activity{border-top:4px solid var(--gold)}.check{border-top:4px solid var(--teal)}label{display:block;font-weight:700;margin:13px 0 5px}input[type=text],textarea,select{width:100%;border:1px solid #bdcbc6;border-radius:9px;padding:10px 12px;font:inherit;background:#fff;color:var(--ink)}textarea{min-height:88px;resize:vertical}.field-note{font-size:.82rem;color:var(--muted);margin-top:4px}
+.quiz-q{padding:12px 0;border-bottom:1px solid var(--line)}.quiz-q:last-of-type{border:0}.quiz-q label{font-weight:500;display:flex;gap:9px;align-items:flex-start;margin:7px 0}.feedback{font-weight:700;margin-top:10px}.output{margin-top:14px;padding:13px 15px;background:var(--teal2);border-radius:10px;color:#164e4c;font-weight:700}
+.next-guide{background:#fff7e7;border-left:5px solid var(--gold);border-radius:0 13px 13px 0;padding:18px 20px}.next-guide ul{margin:7px 0 0;padding-left:20px}
+.progress-wrap{background:#e8efeb;border-radius:99px;height:9px;overflow:hidden;margin:9px 0}.progress-bar{height:100%;width:0;background:var(--teal);transition:width .25s}.progress-text{font-size:.85rem;color:var(--muted)}
+.unit-nav{display:flex;flex-wrap:wrap;gap:8px;margin-top:15px}.unit-nav a{font-size:.84rem}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 15px;margin:10px 0}summary{cursor:pointer;font-weight:700;color:var(--teal)}
+footer{background:#203d42;color:#e8f0ed;padding:34px 0}footer .closing{font-size:1.35rem;font-weight:750;color:#fff;max-width:780px}
+@media(max-width:800px){nav{align-items:flex-start;flex-direction:column}.hero-grid,.unit-layout{grid-template-columns:1fr}.sidecol{position:static}.three{grid-template-columns:1fr}.hero{padding:42px 0}}
+@media(max-width:620px){.grid{grid-template-columns:1fr}.sequence{gap:6px}.step{font-size:.88rem;padding:8px 9px}.arrow{font-size:1rem}section{padding:38px 0}.unit-top{align-items:flex-start;flex-direction:column}}
+@media print{header,.button,.sidecol{display:none}.panel,.card,.lesson,.activity,.check{box-shadow:none}section{break-inside:avoid}}
+</style>
+</head>
+<body>
+<header><div class="wrap"><nav aria-label="Course navigation">
+<a class="brand" href="#top">STARTING STRONG ONLINE</a>
+<div class="links">
+<a href="#welcome">Welcome</a><a href="#unit1">Unit 1</a><a href="#unit2">Unit 2</a><a href="#unit3">Unit 3</a><a href="#unit4">Unit 4</a><a href="#finish">Course completion</a>
+</div></nav></div></header>
+<main id="top">
+<section class="hero" id="welcome"><div class="wrap hero-grid">
+<div><div class="kicker">Your two-week online learning starter course</div>
+<h1>Starting<br>Strong Online</h1>
+<p class="lead">A guided transition and learning support program for first-time distance learners in undergraduate education-related programs.</p>
+<div class="pills"><span class="pill">Four learning units</span><span class="pill">Flexible, mainly asynchronous</span><span class="pill">Learn at your own pace</span></div>
+</div>
+<aside class="panel"><strong>Welcome!</strong>
+<p>This course is designed to help you get ready for learning at a distance. You will practise finding your way around an online course, planning your studies, learning with others, and knowing where to ask for help.</p>
+<p class="small">You do not need to know everything before you begin. The goal is to build confidence and useful habits one step at a time.</p>
+</aside></div></section>
+
+<section><div class="wrap">
+<div class="section-head"><div class="eyebrow">Start here</div><h2>Before you begin</h2>
+<p>Set aside time to work through the four units over two weeks. You may complete the activities in shorter study sessions. The suggested schedule is flexible; it is not a set of live attendance sessions.</p></div>
+<div class="grid">
+<div class="card"><h3>What you will learn</h3><ol><li>Navigate an online learning environment and locate important course resources.</li><li>Develop a realistic study plan suited to your responsibilities.</li><li>Take part in meaningful online interaction using appropriate communication methods.</li><li>Identify support services and explain when and how to approach them.</li></ol></div>
+<div class="card"><h3>How to use this course</h3><ol><li>Begin with the <b>Start Here</b> section of each unit.</li><li>Read or explore the lesson materials.</li><li>Complete the activity and keep your output.</li><li>Try the self-check and read the feedback.</li><li>Reflect, then use the Next Step Guide.</li></ol></div>
+</div>
+<div class="grid" style="margin-top:16px">
+<div class="card"><h3>Your suggested ten-day schedule</h3><p><b>Week 1</b></p><ul><li>Days 1–2: Finding Your Way</li><li>Days 3–5: Learning Independently</li></ul><p><b>Week 2</b></p><ul><li>Days 6–7: Learning With Others</li><li>Days 8–9: Knowing When and Where to Ask</li><li>Day 10: Review your outputs and complete the final reflection</li></ul><p class="small">This is a suggested sequence, not a fixed attendance timetable. Adjust the pace when your circumstances require it.</p></div>
+<div class="card"><h3>Access the course in a way that works for you</h3><ul><li>Lessons are text-first and do not require video streaming.</li><li>You can print this page or use your browser's “Save page” option to keep an offline copy.</li><li>Use a text response instead of audio or video whenever that is more accessible.</li><li>Optional live activities may be offered, but they are not required to complete the course.</li></ul><p class="small">If your connection is limited, load the page when you have access and save a copy for later reading.</p></div>
+</div>
+<div class="card" style="margin-top:16px"><h3>Starting self-assessment</h3><p>Before beginning, think about how ready and confident you currently feel. There are no right or wrong answers. You will revisit this at the end of the course.</p>
+<label for="startReady">How ready do you feel to begin learning in an online or distance course?</label><select id="startReady"><option value="">Choose a response</option><option>Not yet ready</option><option>A little ready</option><option>Somewhat ready</option><option>Mostly ready</option><option>Very ready</option></select>
+<label for="startConfident">How confident do you feel about finding course information, planning your studies, interacting, and seeking help?</label><select id="startConfident"><option value="">Choose a response</option><option>Not confident yet</option><option>A little confident</option><option>Somewhat confident</option><option>Mostly confident</option><option>Very confident</option></select>
+<button class="button smallbtn" onclick="saveFields('start')">Save my starting self-assessment</button><p class="field-note">This is for personal reflection, not a test or a measure of academic ability.</p></div>
+<div class="notice"><b>A note about your institution:</b> This is a sample course design. When an activity asks you to find a course page, help desk, or student service, use the actual links and contact details provided by your own institution. Do not assume that every institution uses the same platform or service names.</div>
+<h3 style="margin-top:25px">Your learning path</h3>
+<div class="sequence"><span class="step"><span class="stage-icon" aria-hidden="true">🧭</span>Start Here</span><span class="arrow">→</span><span class="step"><span class="stage-icon" aria-hidden="true">🔎</span>Explore</span><span class="arrow">→</span><span class="step"><span class="stage-icon" aria-hidden="true">✍️</span>Try It</span><span class="arrow">→</span><span class="step"><span class="stage-icon" aria-hidden="true">✓</span>Check Your Understanding</span><span class="arrow">→</span><span class="step"><span class="stage-icon" aria-hidden="true">💭</span>Reflect</span><span class="arrow">→</span><span class="step"><span class="stage-icon" aria-hidden="true">➡️</span>Your Next Step</span></div>
+<div class="three">
+<article class="unit-card"><div class="unit-label">Unit 01</div><h3>Finding Your Way</h3><p>Learn how to locate the information and tools you need in an online course.</p><a href="#unit1">Go to Unit 1 →</a></article>
+<article class="unit-card"><div class="unit-label">Unit 02</div><h3>Learning Independently</h3><p>Build a study plan that works with your time and responsibilities.</p><a href="#unit2">Go to Unit 2 →</a></article>
+<article class="unit-card"><div class="unit-label">Unit 03</div><h3>Learning With Others</h3><p>Explore ways to communicate and take part in online learning.</p><a href="#unit3">Go to Unit 3 →</a></article>
+</div>
+<div class="unit-card" style="margin-top:14px"><div class="unit-label">Unit 04</div><h3>Knowing When and Where to Ask</h3><p>Practise identifying the right place to seek academic, technical, or administrative help.</p><a href="#unit4">Go to Unit 4 →</a></div>
+</div></section>
+
+<section class="unit" id="unit1"><div class="wrap">
+<div class="unit-top"><div><div class="eyebrow">Unit 01 · Finding Your Way</div><h2>Know where to begin</h2><p class="muted">Your first task is to become familiar with the online space where your learning happens.</p></div><span class="tag">Suggested pace: Days 1–2</span></div>
+<div class="unit-layout"><div class="maincol">
+<article class="lesson"><h3><span class="stage-icon" aria-hidden="true">🧭</span>Start Here</h3><p>When you enter an online course, it can be difficult to know which page to open first. Begin by looking for the course outline or syllabus, announcements, learning materials, activity instructions, deadlines, and submission areas.</p><p>Institutions use different learning management systems (LMS), but the information you need is often similar. Take time to explore before a deadline arrives.</p><h4><span class="stage-icon" aria-hidden="true">🔎</span>Explore: a simple course-navigation checklist</h4><ul><li><b>Course overview:</b> What is the course about, and what are its learning outcomes?</li><li><b>Announcements:</b> Where does the instructor post updates?</li><li><b>Learning materials:</b> Where can you find readings, videos, and other resources?</li><li><b>Activities and deadlines:</b> Where are instructions and due dates posted?</li><li><b>Submission area:</b> How do you submit work and check whether it was received?</li><li><b>Communication:</b> Where can you contact the instructor or classmates?</li></ul></article>
+<article class="activity"><h3><span class="stage-icon" aria-hidden="true">✍️</span>Try It: Make your Personal Online Learning Map</h3><p>Open a course site you can access. Find the items below and write down where you found each one. If you do not yet have access to a course site, use the sample labels and complete the map when access becomes available.</p>
+<label for="u1course">Course or platform name</label><input id="u1course" type="text" placeholder="e.g., Course name or LMS">
+<label for="u1ann">Where will you find announcements?</label><input id="u1ann" type="text" placeholder="Page, tab, or menu name">
+<label for="u1materials">Where are learning materials located?</label><input id="u1materials" type="text" placeholder="Page, tab, or menu name">
+<label for="u1deadlines">Where will you check deadlines?</label><input id="u1deadlines" type="text" placeholder="Page, calendar, or course outline">
+<label for="u1submit">Where will you submit an activity?</label><input id="u1submit" type="text" placeholder="Page or submission area">
+<label for="u1contact">How can you contact your instructor or classmates?</label><input id="u1contact" type="text" placeholder="Message tool, email, forum, etc.">
+<button class="button smallbtn" onclick="saveFields('u1')">Save my map on this device</button><p class="field-note">Your entries are saved only in this browser on this device. Avoid entering passwords or sensitive personal information.</p>
+<div class="output">Your output: Personal Online Learning Map</div></article>
+<article class="check"><h3><span class="stage-icon" aria-hidden="true">✓</span>Check Your Understanding</h3><p>Choose the best answer for each question, then check your responses.</p>
+<div class="quiz-q"><b>1. What should you do first when entering an unfamiliar online course?</b><label><input type="radio" name="q1a" value="a"> Start submitting activities immediately.</label><label><input type="radio" name="q1a" value="b"> Explore the course overview, instructions, and important areas.</label><label><input type="radio" name="q1a" value="c"> Wait until someone tells you where everything is.</label></div>
+<div class="quiz-q"><b>2. Why should you locate the submission area before a deadline?</b><label><input type="radio" name="q1b" value="a"> So you can check how to submit and confirm your work was received.</label><label><input type="radio" name="q1b" value="b"> So you can avoid reading the activity instructions.</label><label><input type="radio" name="q1b" value="c"> It is not necessary until the last minute.</label></div>
+<button class="button smallbtn" onclick="checkQuiz('q1a','b','q1b','a','fb1')">Check answers</button><p id="fb1" class="feedback" aria-live="polite"></p></article>
+<article class="activity"><h3><span class="stage-icon" aria-hidden="true">💭</span>Reflect</h3><p>What did you find easiest to locate? What information or tool would you still need help finding in your actual course?</p><label for="u1reflect">Your reflection</label><textarea id="u1reflect" placeholder="Write a few sentences..."></textarea><button class="button smallbtn" onclick="saveFields('u1')">Save my reflection on this device</button><p class="field-note">Your reflection is saved with this unit's activity responses in this browser.</p></article>
+<div class="next-guide"><b>Your Next Step</b><ul><li>What should I have learned? I can locate the main areas of an online course.</li><li>What should I do next? Keep my learning map and check the course site regularly.</li><li>Where can I get help? Use the course's stated contact method or technical help channel if you cannot access a page.</li></ul></div>
+</div><aside class="sidecol"><div class="panel"><b>Unit progress</b><div class="progress-wrap"><div class="progress-bar" id="bar1"></div></div><div class="progress-text" id="progress1">Not marked complete</div><button class="button secondary smallbtn" onclick="completeUnit(1)">Mark unit complete</button></div><div class="panel"><b>Keep this output</b><p class="small">Personal Online Learning Map</p><a href="#finish">Go to course completion</a></div></aside></div>
+</div></section>
+
+<section class="unit" id="unit2"><div class="wrap">
+<div class="unit-top"><div><div class="eyebrow">Unit 02 · Learning Independently</div><h2>Make a plan you can follow</h2><p class="muted">Independent learning involves making decisions about your study, while recognizing when you need guidance or support.</p></div><span class="tag">Suggested pace: Days 3–5</span></div>
+<div class="unit-layout"><div class="maincol">
+<article class="lesson"><h3><span class="stage-icon" aria-hidden="true">🧭</span>Start Here</h3><p>Flexible learning gives you some control over when and where you study. That flexibility also means you need to plan how learning will fit into your week.</p><h4><span class="stage-icon" aria-hidden="true">🔎</span>Explore: build a realistic routine</h4><ul><li><b>Check the requirements:</b> List readings, activities, and deadlines.</li><li><b>Estimate the time:</b> Break large tasks into smaller sessions.</li><li><b>Choose study periods:</b> Consider work, family responsibilities, rest, and other commitments.</li><li><b>Plan for interruptions:</b> Leave some room to adjust when a week does not go as expected.</li><li><b>Review your plan:</b> Notice what worked and what needs to change.</li></ul>
+<h4>Use active reading strategies</h4><ul><li><b>Preview:</b> Look at the title, headings, learning outcomes, and questions before reading.</li><li><b>Read with a purpose:</b> Keep the activity question or learning outcome in mind.</li><li><b>Pause and process:</b> After a section, summarize its main idea in your own words.</li><li><b>Record questions:</b> Note unfamiliar terms or points you may need to clarify.</li></ul>
+<h4>Manage distractions</h4><ul><li>Choose a study place or time when interruptions are less likely.</li><li>Silence non-essential notifications when possible.</li><li>Work in short, focused periods and take breaks.</li><li>If interruptions happen, identify the next small task rather than abandoning the plan.</li></ul>
+<p>A useful plan is not necessarily a perfect timetable. It is a guide that you can realistically follow and revise.</p></article>
+<article class="activity"><h3><span class="stage-icon" aria-hidden="true">✍️</span>Try It: Help a learner plan their week</h3>
+<p><b>Scenario:</b> A learner works on weekdays and helps care for a family member in the evening. This week, the learner has a 20-page reading, a short quiz based on that reading, and a written activity due on Sunday. The learner has a few shorter periods available during the week and one longer period on Saturday.</p>
+<p>Help the learner divide the work into manageable study periods instead of leaving everything until the deadline. There is no single perfect schedule. Choose an arrangement that gives the learner time to read, prepare for the quiz, and work on the written activity.</p>
+<label for="u2scenario">How would you divide the tasks across the week?</label>
+<textarea id="u2scenario" placeholder="For example: Monday — preview the reading; Wednesday — continue reading and take notes; Saturday — review for the quiz and work on the written activity..."></textarea>
+<label for="u2scenarioWhy">Why do you think this plan is manageable for the learner?</label>
+<textarea id="u2scenarioWhy" placeholder="Explain how the plan considers the learner's available time, responsibilities, and Sunday deadline."></textarea>
+<button class="button smallbtn" onclick="saveFields('u2')">Save my scenario response</button>
+<p class="field-note">Your response is saved in this browser on this device.</p>
+<div class="output">Practice exercise: A sample weekly study arrangement</div>
+</article>
+<article class="activity"><h3>Apply It: Create your Personal Study Plan</h3>
+<p>Now think about your own week. List the learning tasks you need to complete and choose study periods that fit your actual responsibilities. Your plan can be adjusted when circumstances change.</p>
+<label for="u2tasks">What learning tasks do you need to complete this week?</label><textarea id="u2tasks" placeholder="List readings, activities, quizzes, or other requirements."></textarea>
+<label for="u2times">When are two or three realistic times you can study?</label><textarea id="u2times" placeholder="Include the day, time, and approximate length of each session."></textarea>
+<label for="u2barriers">What might interrupt your plan, and what could you do?</label><textarea id="u2barriers" placeholder="Identify a likely difficulty and a practical adjustment."></textarea>
+<label for="u2first">What is the first small step you will take?</label><input id="u2first" type="text" placeholder="A specific action you can begin with">
+<button class="button smallbtn" onclick="saveFields('u2')">Save my study plan on this device</button>
+<p class="field-note">Your entries are saved only in this browser on this device.</p>
+<div class="output">Your output: Personal Study Plan</div>
+</article>
+<article class="check"><h3><span class="stage-icon" aria-hidden="true">✓</span>Check Your Understanding</h3>
+<div class="quiz-q"><b>1. Which study plan is most realistic?</b><label><input type="radio" name="q2a" value="a"> One that fills every free minute and leaves no room for changes.</label><label><input type="radio" name="q2a" value="b"> One that breaks tasks into manageable sessions and considers existing responsibilities.</label><label><input type="radio" name="q2a" value="c"> One that schedules all work for the day before the deadline.</label></div>
+<div class="quiz-q"><b>2. If your original plan stops working, what is a useful response?</b><label><input type="radio" name="q2b" value="a"> Review the plan and adjust the next steps.</label><label><input type="radio" name="q2b" value="b"> Give up on planning altogether.</label><label><input type="radio" name="q2b" value="c"> Ignore the tasks until someone reminds you.</label></div>
+<button class="button smallbtn" onclick="checkQuiz('q2a','b','q2b','a','fb2')">Check answers</button><p id="fb2" class="feedback" aria-live="polite"></p></article>
+<article class="activity"><h3><span class="stage-icon" aria-hidden="true">💭</span>Reflect</h3><p>Which part of your study plan feels most realistic? What is one change you may need to make if your week becomes busy?</p><label for="u2reflect">Your reflection</label><textarea id="u2reflect" placeholder="Write a few sentences..."></textarea><button class="button smallbtn" onclick="saveFields('u2')">Save my reflection on this device</button><p class="field-note">Your reflection is saved with this unit's activity responses in this browser.</p></article>
+<div class="next-guide"><b>Your Next Step</b><ul><li>What should I have learned? I can break learning tasks into manageable study periods.</li><li>What should I do next? Try the plan for a week and revise it when needed.</li><li>Where can I get help? Ask your instructor or academic support service if you need help understanding course requirements or prioritizing tasks.</li></ul></div>
+</div><aside class="sidecol"><div class="panel"><b>Unit progress</b><div class="progress-wrap"><div class="progress-bar" id="bar2"></div></div><div class="progress-text" id="progress2">Not marked complete</div><button class="button secondary smallbtn" onclick="completeUnit(2)">Mark unit complete</button></div><div class="panel"><b>Keep this output</b><p class="small">Personal Study Plan</p><a href="#finish">Go to course completion</a></div></aside></div>
+</div></section>
+
+<section class="unit" id="unit3"><div class="wrap">
+<div class="unit-top"><div><div class="eyebrow">Unit 03 · Learning With Others</div><h2>Make online interaction meaningful</h2><p class="muted">Online interaction can support learning, but meaningful participation takes more than simply posting a message.</p></div><span class="tag">Suggested pace: Days 6–7</span></div>
+<div class="unit-layout"><div class="maincol">
+<article class="lesson"><h3><span class="stage-icon" aria-hidden="true">🧭</span>Start Here</h3><p>In distance education, classmates and instructors may not meet in the same physical space. Communication can happen through discussion forums, messages, email, audio, video, or live sessions.</p><h4><span class="stage-icon" aria-hidden="true">🔎</span>Explore: what makes an exchange useful?</h4><ul><li><b>Be clear:</b> Explain your idea or question so others can understand it.</li><li><b>Be considerate:</b> Respond to the message, not by attacking the person.</li><li><b>Build on ideas:</b> Ask a follow-up question, give a reason, or offer an example.</li><li><b>Choose a suitable mode:</b> Use the communication method that fits the purpose and your access.</li><li><b>Make space for others:</b> Invite participation without assuming everyone is comfortable speaking in the same way.</li></ul><p>A discussion forum creates an opportunity to interact; it does not automatically create connection. The quality and purpose of the exchange matter.</p></article>
+<article class="activity"><h3><span class="stage-icon" aria-hidden="true">✍️</span>Try It: Introduce yourself and exchange ideas</h3><p>First, prepare a short introduction for a learning group. You may use text, audio, or video depending on your access and comfort. Include only information you are comfortable sharing, such as what you hope to learn and one thing that may help you participate.</p><p>Next, read this example from a classmate: <i>“I find it difficult to keep up with readings because I have other responsibilities.”</i> Write a response that acknowledges the concern and adds something useful. You might ask a respectful question, share a practical suggestion, or point the learner toward a relevant course resource.</p>
+<label for="u3response">Your peer response</label><textarea id="u3response" placeholder="I understand that... One thing that might help is..."></textarea>
+<label for="u3intro">Draft your short introduction</label><textarea id="u3intro" placeholder="Hello! I hope to learn... One thing that may help me participate is..."></textarea>
+<label for="u3mode">Which communication mode would you be comfortable using for a short introduction?</label><select id="u3mode"><option value="">Choose one</option><option>Text post</option><option>Audio recording</option><option>Short video</option><option>Live session</option><option>Another accessible option</option></select>
+<label for="u3agreement">What is one agreement that could help your peer learning group work well?</label><input id="u3agreement" type="text" placeholder="e.g., Respond respectfully and explain our ideas">
+<button class="button smallbtn" onclick="saveFields('u3')">Save my activity on this device</button><p class="field-note">Your entries are saved only in this browser on this device.</p><div class="output">Your output: Personal Peer Learning Agreement</div></article>
+<article class="check"><h3><span class="stage-icon" aria-hidden="true">✓</span>Check Your Understanding</h3>
+<div class="quiz-q"><b>1. Which response is most likely to support meaningful discussion?</b><label><input type="radio" name="q3a" value="a"> “I agree.”</label><label><input type="radio" name="q3a" value="b"> “Your point about time management is useful. What helps you decide which task to do first?”</label><label><input type="radio" name="q3a" value="c"> “That is wrong. You should do it my way.”</label></div>
+<div class="quiz-q"><b>2. Does having a discussion forum guarantee that learners feel connected?</b><label><input type="radio" name="q3b" value="a"> Yes, because the space is available.</label><label><input type="radio" name="q3b" value="b"> No. Interaction needs purpose, respectful communication, and opportunities for participation.</label><label><input type="radio" name="q3b" value="c"> Yes, as long as everyone posts the same number of times.</label></div>
+<button class="button smallbtn" onclick="checkQuiz('q3a','b','q3b','b','fb3')">Check answers</button><p id="fb3" class="feedback" aria-live="polite"></p></article>
+<article class="activity"><h3><span class="stage-icon" aria-hidden="true">💭</span>Reflect</h3><p>What makes an online exchange feel useful or welcoming to you? What is one thing you can do to help create that kind of exchange?</p><label for="u3reflect">Your reflection</label><textarea id="u3reflect" placeholder="Write a few sentences..."></textarea><button class="button smallbtn" onclick="saveFields('u3')">Save my reflection on this device</button><p class="field-note">Your reflection is saved with this unit's activity responses in this browser.</p></article>
+<div class="next-guide"><b>Your Next Step</b><ul><li>What should I have learned? I can contribute to an online exchange in a clear and respectful way.</li><li>What should I do next? Choose a communication method and take part in a purposeful peer exchange.</li><li>Where can I get help? Check course communication guidelines or ask the facilitator about an appropriate way to participate.</li></ul></div>
+</div><aside class="sidecol"><div class="panel"><b>Unit progress</b><div class="progress-wrap"><div class="progress-bar" id="bar3"></div></div><div class="progress-text" id="progress3">Not marked complete</div><button class="button secondary smallbtn" onclick="completeUnit(3)">Mark unit complete</button></div><div class="panel"><b>Keep this output</b><p class="small">Personal Peer Learning Agreement</p><a href="#finish">Go to course completion</a></div></aside></div>
+</div></section>
+
+<section class="unit" id="unit4"><div class="wrap">
+<div class="unit-top"><div><div class="eyebrow">Unit 04 · Knowing When and Where to Ask</div><h2>Find the right kind of support</h2><p class="muted">Being an independent learner includes recognizing when to seek help and knowing where to turn.</p></div><span class="tag">Suggested pace: Days 8–9</span></div>
+<div class="unit-layout"><div class="maincol">
+<article class="lesson"><h3><span class="stage-icon" aria-hidden="true">🧭</span>Start Here</h3><p>Different concerns may need different kinds of support. A technical problem may require help with an account or platform. A question about an assignment may need an instructor or academic adviser. An administrative concern may need the office responsible for student records or registration.</p><h4><span class="stage-icon" aria-hidden="true">🔎</span>Explore: match each concern to the right support pathway</h4>
+<p>Different concerns may need help from different people or offices. Read each situation and choose the kind of support you would approach first.</p>
+<div class="match-activity" id="supportMatch">
+ <div class="quiz-q"><b>Situation 1</b><p>You understand the topic generally, but you are unsure how to interpret the instructions for an assignment.</p><label for="match1">Which support pathway would you approach?</label><select id="match1"><option value="">Choose a type of support</option><option value="academic">Academic support</option><option value="technical">Technical support</option><option value="administrative">Administrative support</option></select><p class="small" id="matchFeedback1" aria-live="polite"></p></div>
+ <div class="quiz-q"><b>Situation 2</b><p>You cannot log in to your learning platform, even after checking that you entered your username and password correctly.</p><label for="match2">Which support pathway would you approach?</label><select id="match2"><option value="">Choose a type of support</option><option value="academic">Academic support</option><option value="technical">Technical support</option><option value="administrative">Administrative support</option></select><p class="small" id="matchFeedback2" aria-live="polite"></p></div>
+ <div class="quiz-q"><b>Situation 3</b><p>You need to correct an error in your student record or ask about your registration status.</p><label for="match3">Which support pathway would you approach?</label><select id="match3"><option value="">Choose a type of support</option><option value="academic">Academic support</option><option value="technical">Technical support</option><option value="administrative">Administrative support</option></select><p class="small" id="matchFeedback3" aria-live="polite"></p></div>
+ <button class="button smallbtn" type="button" onclick="checkSupportMatches()">Check my matches</button><p id="matchOverall" class="feedback" aria-live="polite"></p>
+</div>
+<div class="grid" style="margin-top:14px">
+ <div class="card"><h4>Academic support</h4><p class="small">Questions about course content, learning tasks, feedback, or study strategies.</p></div>
+ <div class="card"><h4>Technical support</h4><p class="small">Problems logging in, accessing materials, or using the learning platform.</p></div>
+ <div class="card"><h4>Administrative support</h4><p class="small">Questions about registration, records, procedures, or other student services.</p></div>
+</div>
+<p style="margin-top:14px">Before sending a request, explain what you were trying to do, what happened, and what help you need. Do not include passwords or other sensitive information.</p></article>
+<article class="activity"><h3><span class="stage-icon" aria-hidden="true">✍️</span>Try It: Build your Personal Learner Support Directory</h3><p>Use your institution's official website or course information to identify the correct office or contact channel. If you cannot find a detail yet, write “To be confirmed” and follow up later.</p>
+<label for="u4academic">Academic question: who or where can you ask?</label><input id="u4academic" type="text" placeholder="Instructor, adviser, academic support channel...">
+<label for="u4technical">Technical problem: where can you get help?</label><input id="u4technical" type="text" placeholder="Help desk or technical support channel...">
+<label for="u4admin">Administrative concern: which office handles it?</label><input id="u4admin" type="text" placeholder="Relevant student services or administrative office...">
+<label for="u4request">Practise writing a clear request for help</label><textarea id="u4request" placeholder="Hello, I was trying to... The problem I encountered was... I have already tried... Could you please advise me on..."></textarea>
+<button class="button smallbtn" onclick="saveFields('u4')">Save my directory on this device</button><p class="field-note">Your entries are saved only in this browser on this device. Use official institutional contact details when completing your directory.</p><div class="output">Your output: Personal Learner Support Directory</div></article>
+<article class="check"><h3><span class="stage-icon" aria-hidden="true">✓</span>Check Your Understanding</h3>
+<div class="quiz-q"><b>1. You cannot log in to your course site. Where should you usually start?</b><label><input type="radio" name="q4a" value="a"> Technical support or the institution's stated access-help channel.</label><label><input type="radio" name="q4a" value="b"> A classmate who does not manage the platform.</label><label><input type="radio" name="q4a" value="c"> Wait until the course ends.</label></div>
+<div class="quiz-q"><b>2. What makes a request for help clearer?</b><label><input type="radio" name="q4b" value="a"> Sending only “Help!”</label><label><input type="radio" name="q4b" value="b"> Explaining what you were trying to do, what happened, and what help you need.</label><label><input type="radio" name="q4b" value="c"> Including your password so the staff can log in for you.</label></div>
+<button class="button smallbtn" onclick="checkQuiz('q4a','a','q4b','b','fb4')">Check answers</button><p id="fb4" class="feedback" aria-live="polite"></p></article>
+<article class="activity"><h3><span class="stage-icon" aria-hidden="true">💭</span>Reflect</h3><p>Which support pathway was easiest to identify? Is there any contact detail you still need to confirm with your institution?</p><label for="u4reflect">Your reflection</label><textarea id="u4reflect" placeholder="Write a few sentences..."></textarea><button class="button smallbtn" onclick="saveFields('u4')">Save my reflection on this device</button><p class="field-note">Your reflection is saved with this unit's activity responses in this browser.</p></article>
+<div class="next-guide"><b>Your Next Step</b><ul><li>What should I have learned? I can identify the right support pathway for common concerns.</li><li>What should I do next? Keep my directory somewhere I can find it during the term.</li><li>Where can I get help? Use the official contact information listed by your institution.</li></ul></div>
+</div><aside class="sidecol"><div class="panel"><b>Unit progress</b><div class="progress-wrap"><div class="progress-bar" id="bar4"></div></div><div class="progress-text" id="progress4">Not marked complete</div><button class="button secondary smallbtn" onclick="completeUnit(4)">Mark unit complete</button></div><div class="panel"><b>Keep this output</b><p class="small">Personal Learner Support Directory</p><a href="#finish">Go to course completion</a></div></aside></div>
+</div></section>
+
+<section id="finish"><div class="wrap">
+<div class="section-head"><div class="eyebrow">Course completion</div><h2>Take your next step with confidence</h2><p>You have reached the end of Starting Strong Online. Review the outputs you created and think about how you can use them in your actual courses.</p></div>
+<div class="grid">
+<div class="card"><h3>Your four course outputs</h3><ul><li>Personal Online Learning Map</li><li>Personal Study Plan</li><li>Personal Peer Learning Agreement</li><li>Personal Learner Support Directory</li></ul><p class="small">These are practical references. Keep them where you can access them during your studies.</p></div>
+<div class="card"><h3>Final reflection</h3><label for="final1">What is one thing you understand better about learning at a distance?</label><textarea id="final1" placeholder="Write your reflection..."></textarea><label for="final2">What is one action you will take in your first course?</label><textarea id="final2" placeholder="Write one specific next step..."></textarea><button class="button smallbtn" onclick="saveFields('final')">Save my reflection on this device</button><p class="field-note">Your reflection stays in this browser on this device.</p></div>
+</div>
+<div class="card" style="margin-top:16px"><h3>Ending self-assessment</h3><p>Compare your responses with the starting self-assessment. Have your sense of readiness or confidence changed? The purpose is to notice your own learning, not to prove that the program guarantees success.</p>
+<label for="endReady">How ready do you now feel to begin or continue learning in an online or distance course?</label><select id="endReady"><option value="">Choose a response</option><option>Not yet ready</option><option>A little ready</option><option>Somewhat ready</option><option>Mostly ready</option><option>Very ready</option></select>
+<label for="endConfident">How confident do you now feel about finding course information, planning your studies, interacting, and seeking help?</label><select id="endConfident"><option value="">Choose a response</option><option>Not confident yet</option><option>A little confident</option><option>Somewhat confident</option><option>Mostly confident</option><option>Very confident</option></select>
+<button class="button smallbtn" onclick="saveFields('end')">Save my ending self-assessment</button></div>
+<div class="dark-callout"><strong>Remember</strong><p class="closing">Starting strong does not mean never needing help. It means knowing how to move forward—and where to turn when you need support.</p></div>
+<p class="small" style="margin-top:18px">This is a proposed introductory course. Its activities and resources are intended to help learners prepare for their own institution's learning environment; they do not replace official course instructions or student services.</p>
+</div></section>
+</main>
+<footer><div class="wrap"><p class="kicker" style="color:#a9d6ca">Starting Strong Online</p><p class="closing">Independence grows when learners have both room to learn and support to move forward.</p><p class="small" style="color:#c5d7d1">A proposed two-week transition and learning support course for first-time distance learners.</p></div></footer>
+<script>
+function saveFields(prefix){
+  const els=[...document.querySelectorAll('[id^="'+prefix+'"]')].filter(e=>e.matches('input,textarea,select'));
+  const data={};els.forEach(e=>data[e.id]=e.value);
+  try{localStorage.setItem('sso_'+prefix,JSON.stringify(data));alert('Your work has been saved in this browser on this device.');}
+  catch(e){alert('This browser could not save your work. You can copy your responses into your own notes instead.');}
+}
+function restoreFields(){
+  ['u1','u2','u3','u4','final','start','end'].forEach(prefix=>{
+    try{const data=JSON.parse(localStorage.getItem('sso_'+prefix)||'{}');Object.entries(data).forEach(([id,val])=>{const el=document.getElementById(id);if(el)el.value=val;});}catch(e){}
+  });
+  for(let i=1;i<=4;i++){if(localStorage.getItem('sso_done_'+i)==='yes')showComplete(i);}
+}
+function checkQuiz(n1,a1,n2,a2,feedbackId){
+ const v1=document.querySelector('input[name="'+n1+'"]:checked')?.value;
+ const v2=document.querySelector('input[name="'+n2+'"]:checked')?.value;
+ const score=(v1===a1?1:0)+(v2===a2?1:0);
+ const f=document.getElementById(feedbackId);
+ f.textContent=score===2?'You got both correct. Well done! Review the explanations in the lesson if you want to reinforce your understanding.':score===1?'You got one correct. Review the lesson and try again.':'Not quite yet. Revisit the lesson, then try again.';
+ f.style.color=score===2?'#176b68':'#a34e37';
+}
+function checkSupportMatches(){
+ const answers={match1:'academic',match2:'technical',match3:'administrative'};
+ let score=0;
+ Object.entries(answers).forEach(([id,answer],index)=>{
+   const chosen=document.getElementById(id).value;
+   const feedback=document.getElementById('matchFeedback'+(index+1));
+   if(chosen===answer){
+     score++;
+     feedback.textContent='Correct. '+({academic:'Assignment instructions and course questions are academic concerns.',technical:'Login and platform-access problems are technical concerns.',administrative:'Student records and registration questions are administrative concerns.'}[answer]);
+     feedback.style.color='#176b68';
+   }else if(chosen===''){
+     feedback.textContent='Choose a support pathway, then check your answers.';
+     feedback.style.color='#a34e37';
+   }else{
+     feedback.textContent='Not quite. Think about whether the concern is about learning, technology, or an institutional process.';
+     feedback.style.color='#a34e37';
+   }
+ });
+ const overall=document.getElementById('matchOverall');
+ overall.textContent=score===3?'You matched all three situations correctly. Well done!':`You matched ${score} of 3 correctly. Review the support descriptions and try again.`;
+ overall.style.color=score===3?'#176b68':'#a34e37';
+}
+function showComplete(i){
+ document.getElementById('bar'+i).style.width='100%';
+ document.getElementById('progress'+i).textContent='Marked complete';
+}
+function completeUnit(i){
+ localStorage.setItem('sso_done_'+i,'yes');showComplete(i);
+}
+restoreFields();
+</script>
+</body></html>
